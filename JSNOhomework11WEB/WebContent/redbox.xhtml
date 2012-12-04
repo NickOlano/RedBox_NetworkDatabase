@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+<title>#{msgs.title}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="copyright" content="(c) 2012 Jeff Stern and Nick Olano" />
+<h:outputStylesheet library="css" name="redbox.css" />
+</h:head>
+
+<h:body>
+	<div class="content">
+	<div class="movieGrid">
+	<h:form>
+	<h:dataTable var="name" value="#{redbox.grid}">
+    <h:column><f:facet name="header"><h:commandButton value="#{msgs.resetButton}"
+      action="#{redbox.doquery}" /></f:facet> 
+    </h:column>
+
+	<h:column><f:facet name="header"><h:commandButton value="#{msgs.all}"
+	  action="#{redbox.all}"
+      styleClass="#{redbox.isActive('All') ? 'highlight' : ''}" /></f:facet> 
+    </h:column>
+	<h:column> <f:facet name="header"><h:commandButton value="#{msgs.action}"
+	  action="#{redbox.action}"
+	  styleClass="#{redbox.isActive('Action') ? 'highlight' : ''}" /> </f:facet>
+	</h:column>
+	<h:column><f:facet name="header">
+	  <h:commandButton value="#{msgs.comedy}" action="#{redbox.comedy}"
+      styleClass="#{redbox.isActive('Comedy') ? 'highlight' : ''}" /></f:facet>
+    </h:column>
+	<h:column>
+	  <f:facet name="header">
+	  <h:commandButton value="#{msgs.drama}" action="#{redbox.drama}"
+      styleClass="#{redbox.isActive('Drama') ? 'highlight' : ''}" />
+      </f:facet>
+      </h:column>
+	<h:column>
+	  <f:facet name="header"> <h:commandButton value="#{msgs.family}"
+	  action="#{redbox.family}"
+      styleClass="#{redbox.isActive('Family') ? 'highlight' : ''}" /> </f:facet>
+    </h:column>
+	<h:column>
+	  <f:facet name="header"> <h:commandButton value="#{msgs.horror}"
+	  action="#{redbox.horror}"
+      styleClass="#{redbox.isActive('Horror') ? 'highlight' : ''}" />
+      </f:facet>
+    </h:column>
+	<h:column>
+	    <f:facet name="header">
+	    <h:selectOneMenu class="leftmargin" value="#{redbox.selectedRating}">
+        <f:selectItems value="#{redbox.ratingsSelection}"> </f:selectItems>
+          <f:ajax render="@all" execute="@all"></f:ajax>
+        </h:selectOneMenu>
+        </f:facet>
+    </h:column>
+	<h:column>
+	    <f:facet name="header"> <h:selectOneMenu value="#{redbox.selectedSort}">
+        <f:selectItems value="#{redbox.sortSelection}"> </f:selectItems>
+          <f:ajax render="@all" execute="@all"> </f:ajax>
+        </h:selectOneMenu></f:facet>
+    </h:column>	
+    </h:dataTable>
+    </h:form>
+    <br />
+    <span class="titleDisplay">#{redbox.selectedGenre } #{msgs.Movies}</span>
+    <span class="ratingDisplay">#{msgs.rating} #{redbox.selectedRating }</span>
+    
+    <hr />
+    
+    <h:form styleClass="movieTable">
+    
+     <ui:repeat id="grid" value="#{redbox.filterCovers()}"
+       var="name" varStatus="count">
+       
+    <h:commandLink action="#{redbox.selectMovie}">
+       <f:setPropertyActionListener target="#{redbox.movieShown}"
+         value="#{name}" />
+       <h:graphicImage value="resources/images/#{name}"
+         styleClass="thumbnailImage" />
+    </h:commandLink>
+    
+    </ui:repeat>
+    </h:form>
+
+    #{msgs.realDeal}
+
+    </div>
+</div>
+
+</h:body>
+</html>

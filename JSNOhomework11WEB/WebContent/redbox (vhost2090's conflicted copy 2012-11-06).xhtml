@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+<title>New Movie Releases on DVD at Redbox</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="copyright" content="(c) 2012 Jeff Stern and Nick Olano" />
+<h:outputStylesheet library="css" name="redbox.css" />
+</h:head>
+
+<h:body>
+	<div class="content">
+	
+	<h:commandButton value="All" />
+	<h:commandButton value="Action" />
+	<h:commandButton value="Comedy" />
+	<h:commandButton value="Drama" />
+	<h:commandButton value="Family" />
+	<h:commandButton value="Horror" />
+	
+	<h:selectOneMenu>
+		<f:selectItems value="#{redbox.ratingsSelection}"></f:selectItems>
+	</h:selectOneMenu>
+	<h:selectOneMenu>
+		<f:selectItems value="#{redbox.sortSelection}"></f:selectItems>
+	</h:selectOneMenu>
+
+    <div class="movieGrid">
+     <ui:repeat value="#{redbox.filterCovers()}" var="name" varStatus="count">
+       
+    <h:outputLink value="redboxSelection.jsf">   
+       <h:graphicImage value="resources/images/#{name}" styleClass="thumbnailImage" />
+    </h:outputLink>
+    
+     </ui:repeat>
+    </div>
+    <!--  
+	<h:dataTable var="name" 
+             value="#{redbox.filterCovers()}"
+             border="0" cellpadding="2" cellspacing="0"
+             styleClass="mainTable"
+             captionClass="caption1"
+             headerClass="heading"
+             rowClasses="even,odd">
+             
+               <h:column>
+    
+  </h:column>
+</h:dataTable>
+
+-->
+
+</div>
+</h:body>
+</html>

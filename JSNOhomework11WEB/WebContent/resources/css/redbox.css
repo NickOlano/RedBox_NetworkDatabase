@@ -1,0 +1,92 @@
+/* (c) Jeff Stern and Nick Olano, 2012 */
+
+body, h1, h2, h3, h4, h5, h6 {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.content {
+  width: 850px;
+  border: 1px black solid;
+  margin: 0px auto;
+}
+
+.selectionDisplay{
+  width: 1000px;
+    border: 0px;
+}
+
+.continueButton {
+  float:right;
+  text-align: center;
+  background-color: red;
+  color: white;
+  width: 175px;
+}
+
+#leftCol {
+  float: left;
+  width: 270px;
+}
+
+#rightCol {
+  width: 725px;
+  float: right;
+}
+
+#description {
+  float: left;
+  width: 360px;
+}
+
+#details {
+  width: 340px;
+  float: right;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.border {
+  border: 1px black solid;
+  padding: 3px;
+}
+
+.coverPhotoLarge {
+  width:260px;
+  padding-top: 50px;
+}
+
+.thumbnailImage {
+  width: 110px;
+  margin-right:10px;
+  margin-bottom:5px;
+}
+
+.movieGrid {
+  width: 730px;
+  margin: 0 auto;
+}
+
+.movieTable {
+  text-align: left;
+  margin-left: 10px;
+}
+
+.highlight {
+  background-color: blue;
+  color: white;
+}
+
+.titleDisplay{
+ font-weight: bold;
+}
+
+.leftmargin {
+   margin-left:20px;
+}
+ 
+.ratingDisplay {
+  padding-left:15px;
+  font-size:small;
+}

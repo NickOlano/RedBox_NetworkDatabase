@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:templates="http://java.sun.com/jsf/composite/templates">
+<h:head>
+
+<title> #{redbox.movieShownTitle}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="copyright" content="(c) 2012 Jeff Stern and Nick Olano" />
+<h:outputStylesheet library="css" name="redbox.css" />
+</h:head>
+<h:body>
+<div class="content selectionDisplay">
+
+<h:form>
+
+			<h:commandButton id="continueButton" styleClass="continueButton"
+  action="#{redbox.continueButton}" value="#{msgs.continueButton}" />
+            <h:commandButton id="deleteButton" styleClass="continueButton"
+                action="#{redbox.deleteButton}" value="#{msgs.deleteButton}" />
+
+</h:form>
+
+ 
+#{redbox.movieShown}
+
+<div id="leftCol">
+	<img src="resources/images/#{redbox.movieShownImagePath}" class="coverPhotoLarge" />
+</div>
+
+<div id="rightCol">
+
+<h1 class="movieTitle">#{redbox.movieShownTitle}</h1>
+
+<div id="description">
+  <span class="border">#{redbox.movieShownRate}</span>
+  <span class="border"> #{redbox.movieShownTime}</span>
+  <br />
+  <p>
+    #{redbox.movieShownDescription}
+  </p>
+</div>
+
+<div id="details">
+#{redbox.movieShownRating} average rating
+<hr />
+
+<table>
+  <tr>
+	<td class="bold">#{msgs.genre}</td>
+	<td>
+	  <ui:repeat value="#{redbox.movieShownGenres}" var="current"
+	    varStatus="status">
+	  <ui:fragment rendered="#{!status.last}">
+	  #{current},
+	  </ui:fragment>
+	  <ui:fragment rendered="#{status.last}">
+	  #{current}
+	  </ui:fragment>
+	  </ui:repeat>
+	</td>
+  </tr>
+  <tr>
+    <td class="bold">#{msgs.stars}</td>
+	<td>
+	  <ui:repeat value="#{redbox.movieShownStarring}" var="current"
+	    varStatus="status">
+      <ui:fragment rendered="#{!status.last}">
+      #{current},
+      </ui:fragment>
+      <ui:fragment rendered="#{status.last}">
+      #{current}
+      </ui:fragment>
+      </ui:repeat>
+    </td>
+  </tr>
+  <tr>
+    <td class="bold">#{msgs.directors}</td>
+	<td>
+	  <ui:repeat value="#{redbox.movieShownDirectors}" var="current"
+	    varStatus="status">
+      <ui:fragment rendered="#{!status.last}">
+      #{current},
+      </ui:fragment>
+      <ui:fragment rendered="#{status.last}">
+      #{current}
+      </ui:fragment>
+      </ui:repeat>
+    </td>
+  </tr>
+  <tr>
+    <td class="bold">#{msgs.studio}</td>
+	<td>#{redbox.movieShownStudio}</td>
+  </tr>
+  <tr>
+    <td class="bold">#{msgs.subtitle}</td>
+	<td>
+	  <ui:repeat value="#{redbox.movieShownSubtitles}" var="current"
+	    varStatus="status">
+      <ui:fragment rendered="#{!status.last}">
+      #{current},
+      </ui:fragment>
+      <ui:fragment rendered="#{status.last}">
+      #{current}
+      </ui:fragment>
+      </ui:repeat>
+    </td>
+  </tr>
+  <tr>
+    <td class="bold">#{msgs.format}</td><td>#{redbox.movieShownFormat}</td>
+  </tr>
+</table>
+
+</div>
+</div>
+
+</div>
+
+</h:body>
+</html>
